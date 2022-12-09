@@ -1,0 +1,45 @@
+﻿<Window x:Class="Assignment4.EncryptionToolWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment4" d:DataContext="{d:DesignInstance Type=local:EncryptionToolWindow}"
+        mc:Ignorable="d"
+        Title="EncryptionToolWindow" Height="364" Width="420">
+    <Grid>
+        <StackPanel Margin="10"  Orientation="Vertical">
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBlock Margin="0,0,5,0" Width="300">Please Enter Your Message</TextBlock>
+                <Button Width="80" Margin="0,0,0,0" Click="Load1_Clicked">Load Text</Button>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBox Margin="0,0,5,0" Width="300" Text="{Binding MessageInput,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="MessageInput_Changed"></TextBox>
+                <Button x:Name="Encrypt_Button" Width="80" Click="Encrypt_Clicked" IsEnabled="False">Encrypt</Button>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBlock Width="300">Result:</TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,60" Orientation="Horizontal">
+                <TextBox x:Name="___No_Name_" Margin="0,0,5,0" Width="300" Text="{Binding CypherOutput,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="CypherOutput_Changed"></TextBox>
+                <Button x:Name="Save_Button1" Width="80" Click="Save1_Clicked" IsEnabled="False">Save to file</Button>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBlock Margin="0,0,5,0" Width="300">Please enter your cypher text</TextBlock>
+                <Button Width="80" Click="Load2_Clicked">Load Cypher</Button>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBox Margin="0,0,5,0" Width="300" Text="{Binding CypherInput,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="CypherInput_Changed"></TextBox>
+                <Button x:Name="Decrypt_Button" Width="80" Click="Decrypt_Clicked" IsEnabled="False">Decrypt</Button>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBlock>Result:</TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBox Margin="0,0,5,0" Width="300" Text="{Binding MessageOutput,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="MessageOutput_Changed"></TextBox>
+                <Button x:Name="Save_Button2" Width="80" Click="Save2_Clicked" IsEnabled="False">Save to File</Button>
+            </StackPanel>
+            <Button x:Name="Back_Button" Margin="0,0,0,0" HorizontalAlignment="Left" Click="Back_Button_Clicked">Back</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
