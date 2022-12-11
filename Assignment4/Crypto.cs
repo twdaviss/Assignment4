@@ -30,11 +30,22 @@ namespace Assignment4
         public void Initialize()
         {
             var random = RandomNumberGenerator.Create();
+            byte[] byte1 = new byte[16];
+            byte[] byte2 = new byte[16];
+            //random.GetBytes(byte1, 0, 16);
+            //random.GetBytes(byte2,0,16);
             switch (mode)
             {
                 case CryptoAlgorithm.AES:
                     aes = Aes.Create();
-                    aes.KeySize = 256;
+                    aes.KeySize = 128;
+                    aes.BlockSize= 128;
+                    aes.Mode = CipherMode.CBC;
+                    aes.Padding = PaddingMode.PKCS7;
+                    //random.GetBytes(byte1);
+                    aes.Key= byte1;
+                    //random.GetBytes(byte2);
+                    aes.IV= byte2;
                     break;
                 case CryptoAlgorithm.RSA:
                     rsa = RSA.Create();
@@ -92,7 +103,6 @@ namespace Assignment4
                         break;
                     case CryptoAlgorithm.AES:
                         Initialize();
-                        aes.KeySize = 256;
                         aes.Key = File.ReadAllBytes(path);
                         break;
                 }
@@ -160,6 +170,7 @@ namespace Assignment4
                 rsa.ExportParameters(false);
                 try
                 {
+                    //rsa.Padding = PaddingMode.PKCS7;
                     byte[] plainbytes = rsa.Decrypt(input, RSAEncryptionPadding.OaepSHA1);
                     return plainbytes;
                 }
